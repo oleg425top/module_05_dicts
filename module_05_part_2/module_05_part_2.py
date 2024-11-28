@@ -59,7 +59,7 @@ def get_result(answers_dict:dict):
             count_right_answers += 1
         else:
             print(f' {answer} - отвечено неверно')
-    return f'ваш уровень знаний {levels.setdefault(count_right_answers)}'
+    return f'{levels.setdefault(count_right_answers)}'
 
 
 
