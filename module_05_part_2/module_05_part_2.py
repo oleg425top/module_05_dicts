@@ -61,6 +61,6 @@ def get_result(answers_dict:dict):
             print(f' {answer} - отвечено неверно')
     return f'ваш уровень знаний {levels.setdefault(count_right_answers)}'
 
-print(get_result(base_program(get_user_level('средний'))))
+
 
 
