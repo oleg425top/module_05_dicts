@@ -1,3 +1,5 @@
+import json
+
 words_easy = {
       "family": "семья",
       "hand": "рука",
@@ -61,6 +63,9 @@ def get_result(answers_dict:dict):
             print(f' {answer} - отвечено неверно')
     return f'{levels.setdefault(count_right_answers)}'
 
-
+def create_json_files(test_answers, name):
+    json_data = json.dumps(test_answers, ensure_ascii=False, indent=4)
+    with open(f'{name}.json', 'w', encoding='utf-8') as file:
+        file.write(json_data)
 
 
