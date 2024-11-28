@@ -54,6 +54,7 @@ def base_program(get_user_level_dict:dict):
 
 
 def get_result(answers_dict:dict):
+    global f
     count_right_answers = 0
     for answer in answers_dict:
         if answers_dict.setdefault(answer):
@@ -61,9 +62,11 @@ def get_result(answers_dict:dict):
             count_right_answers += 1
         else:
             print(f' {answer} - отвечено неверно')
+    f = f'{levels.setdefault(count_right_answers)}'
     return f'{levels.setdefault(count_right_answers)}'
 
-def create_json_files(test_answers, name):
+def create_json_files(test_answers:dict, name):
+    test_answers.update({f'{name}': f'{f}'})
     json_data = json.dumps(test_answers, ensure_ascii=False, indent=4)
     with open(f'{name}.json', 'w', encoding='utf-8') as file:
         file.write(json_data)
