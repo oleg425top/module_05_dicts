@@ -32,6 +32,13 @@ levels = {
 
 
 def get_user_level(user_level):
+    with open('questions.json', 'r', encoding='utf-8') as file:
+        data_level = json.load(file)
+        # level_data = data_level[1]["levels"]
+        questions = data_level[0]["questions"]
+        words_easy = questions[0]
+        words_medium = questions[1]
+        words_hard = questions[2]
     if user_level == 'средний':
         level_dict = words_medium
     elif user_level == 'сложный':
@@ -56,6 +63,7 @@ def base_program(get_user_level_dict:dict):
 def get_result(answers_dict:dict):
     global f
     count_right_answers = 0
+
     for answer in answers_dict:
         if answers_dict.setdefault(answer):
             print(f' {answer} - отвечено верно')
