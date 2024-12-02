@@ -6,10 +6,6 @@ test_words = get_user_level(user_lvl)
 test_answers = base_program(test_words)
 result = get_result(test_answers)
 print(f"\nВаш ранг:\n{result}")
-
-
-
-
 create_json_files(test_answers, name)
 print('Создан файл с вашими ответами')
 

@@ -1,50 +1,8 @@
 import json
 
-# words_easy = {
-#       "family": "семья",
-#       "hand": "рука",
-#       "people": "люди",
-#       "evening": "вечер",
-#       "minute": "минута",
-# }
-# words_medium = {
-#       "believe": "верить",
-#       "feel": "чувствовать",
-#       "make": "делать",
-#       "open": "открывать",
-#       "think": "думать",
-# }
-# words_hard = {
-#       "rural": "деревенский",
-#       "fortune": "удача",
-#       "exercise": "упражнение",
-#       "suggest": "предлагать",
-#       "except": "кроме",
-# }
-# levels = {
-#       0: "Нулевой",
-#       1: "Так себе",
-#       2: "Можно лучше",
-#       3: "Норм",
-#       4: "Хорошо",
-#       5: "Отлично"
-# }
-# def repack_json():
-#     # global words_medium, words_hard, words_easy, level_data
-#     with open('questions.json', 'r', encoding='utf-8') as file:
-#         data_level = json.load(file)
-#         level_data = data_level[1]["levels"]
-#         questions = data_level[0]["questions"]
-#         words_easy = questions[0]
-#         words_medium = questions[1]
-#         words_hard = questions[2]
-#     return level_data, questions, words_easy, words_medium, words_hard
-
-
 def get_user_level(user_level):
     with open('questions.json', 'r', encoding='utf-8') as file:
         data_level = json.load(file)
-        # level_data = data_level[1]["levels"]
         questions = data_level[0]["questions"]
         words_easy = questions[0]
         words_medium = questions[1]
