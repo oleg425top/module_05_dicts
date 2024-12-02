@@ -1,12 +1,18 @@
 import json
 
-def get_user_level(user_level):
+
+def repack_json()->list:
     with open('questions.json', 'r', encoding='utf-8') as file:
-        data_level = json.load(file)
-        questions = data_level[0]["questions"]
-        words_easy = questions[0]
-        words_medium = questions[1]
-        words_hard = questions[2]
+        python_list = json.load(file)
+    return python_list
+
+python_list_data = repack_json()
+
+def get_user_level(user_level):
+
+    words_medium = python_list_data[0]["questions"][0]
+    words_hard = python_list_data[0]["questions"][2]
+    words_easy = python_list_data[0]["questions"][0]
     if user_level == 'средний':
         level_dict = words_medium
     elif user_level == 'сложный':
@@ -29,11 +35,10 @@ def base_program(get_user_level_dict:dict):
 
 
 def get_result(answers_dict:dict):
-    with open('questions.json', 'r', encoding='utf-8') as file:
-        data_level = json.load(file)
-        level_data = data_level[1]["levels"]
-    global f
+
+    global rang_word
     count_right_answers = 0
+    level_data = python_list_data[1]["levels"]
 
     for answer in answers_dict:
         if answers_dict.setdefault(answer):
@@ -41,11 +46,10 @@ def get_result(answers_dict:dict):
             count_right_answers += 1
         else:
             print(f' {answer} - отвечено неверно')
-    f = f'{level_data.setdefault(str(count_right_answers))}'
+    rang_word = f'{level_data.setdefault(str(count_right_answers))}'
     return f'{level_data.setdefault(str(count_right_answers))}'
-
 def create_json_files(test_answers:dict, name):
-    test_answers.update({f'{name}': f'{f}'})
+    test_answers.update({f'{name}': f'{rang_word}'})
     json_data = json.dumps(test_answers, ensure_ascii=False, indent=4)
     with open(f'{name}.json', 'w', encoding='utf-8') as file:
         file.write(json_data)
